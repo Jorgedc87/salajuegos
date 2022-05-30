@@ -17,7 +17,7 @@ import { PiedraPapelTijeraComponent } from './components/juegos/piedra-papel-tij
 import { TatetiComponent } from './components/juegos/tateti/tateti.component';
 import { ListajuegosComponent } from './components/juegos/listajuegos/listajuegos.component';
 import { JuegoactivoComponent } from './components/juegos/juegoactivo/juegoactivo.component';
-import { environment } from 'src/environments/environment';
+import { firebase } from 'src/environments/firebase';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 
@@ -44,7 +44,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
