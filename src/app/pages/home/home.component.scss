@@ -31,6 +31,9 @@ body {
   /* Declare heights because of positioning of img element */
   .carousel-item {
     height: 20rem;
+    img{
+      width: 100%;
+    }
   }
   
   
