@@ -1,0 +1,20 @@
+@use '../../../../assets/scss/variables' as var;
+
+.pantalla-juegos{
+    font-family: var.$terciaria;
+
+    .botones-nav{
+        display: flex;
+        justify-content:center;
+        column-gap: 20px;
+    }
+
+    .juego-activo{
+        background-color: rgb(231, 231, 231);
+        border: 4px double gray;
+        width: 500px;
+        max-width: 1200px;
+        min-height: 400px;
+        margin: 0 auto;
+    }
+}

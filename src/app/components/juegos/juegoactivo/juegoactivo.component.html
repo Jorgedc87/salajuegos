@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="pantalla-juegos text-center">
+        <div class="botones-nav">
+            <button class="btn btn-primary" (click)="cambiaJuego('Ninguno')">Volver</button>
+            <button class="btn btn-warning" (click)="cambiaPantalla('Highscore')" *ngIf="tipoPantalla === 'Juego'">Highscores</button>
+            <button class="btn btn-warning" (click)="cambiaPantalla('Juego')" *ngIf="tipoPantalla === 'Highscore'">Juego</button>
+        </div>
+        <br>
+        <div class="juego-activo" *ngIf="tipoPantalla === 'Juego'">
+            <div *ngIf="juegoActivo === 'PPT'">
+                <app-piedra-papel-tijera></app-piedra-papel-tijera>
+            </div>
+            <div *ngIf="juegoActivo === 'Tateti'">
+                <app-tateti></app-tateti>
+            </div>
+        </div>
+        <div class="score">
+            
+        </div>
+    </div>
+</div>

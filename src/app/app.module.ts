@@ -13,6 +13,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { JuegosComponent } from './pages/juegos/juegos.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PiedraPapelTijeraComponent } from './components/juegos/piedra-papel-tijera/piedra-papel-tijera.component';
+import { TatetiComponent } from './components/juegos/tateti/tateti.component';
+import { ListajuegosComponent } from './components/juegos/listajuegos/listajuegos.component';
+import { JuegoactivoComponent } from './components/juegos/juegoactivo/juegoactivo.component';
+import { environment } from 'src/environments/environment';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 @NgModule({
@@ -25,13 +32,19 @@ import { HttpClientModule } from '@angular/common/http';
     TopmenuComponent,
     FooterComponent,
     JuegosComponent,
-    ErrorComponent
+    ErrorComponent,
+    PiedraPapelTijeraComponent,
+    TatetiComponent,
+    ListajuegosComponent,
+    JuegoactivoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

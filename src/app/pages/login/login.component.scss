@@ -100,6 +100,22 @@ body{
     border: 1px solid var.$hv-color2;
   }
 }
+
+.wrapper .form .button-google input{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 0px;
+  background: #fc6767;
+  border: 1px solid #fc6767;
+  cursor: pointer;
+
+  &:hover{
+      color: rgb(59, 59, 59);
+    background: var.$hv-color;
+    border: 1px solid var.$hv-color2;
+  }
+}
 .form .button input:hover{
   background: #12876f;
 }

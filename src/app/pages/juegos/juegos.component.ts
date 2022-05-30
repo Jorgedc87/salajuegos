@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JuegosComponent implements OnInit {
 
+  juegoActivo: string = 'Ninguno'
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  cambiaJuego(juego: string){
+    this.juegoActivo = juego
   }
 
 }

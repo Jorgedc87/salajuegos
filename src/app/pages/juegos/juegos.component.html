@@ -1,22 +1,3 @@
-<div class="container juego-flex">
-    <div class="juego-item">
-        <div class="juego-img"><img src="./assets/img/juegos/ttt.jpg" alt=""></div>
-        <div class="juego-nombre">TaTeTi</div>
-    </div>
-    <div class="juego-item">
-        <div class="juego-img"><img src="./assets/img/juegos/gtn.jpg" alt=""></div>
-        <div class="juego-nombre">Adivina el número</div>
-    </div>
-    <div class="juego-item">
-        <div class="juego-img"><img src="./assets/img/juegos/ppt.jpg" alt=""></div>
-        <div class="juego-nombre">Piedra Papel o Tijera</div>
-    </div>
-    <div class="juego-item">
-        <div class="juego-img"><img src="./assets/img/juegos/trivia.jpg" alt=""></div>
-        <div class="juego-nombre">Trivia</div>
-    </div>
-    <div class="juego-item">
-        <div class="juego-img"><img src="./assets/img/juegos/sudoku.png" alt=""></div>
-        <div class="juego-nombre">Sudoku</div>
-    </div>
-</div>
+<app-listajuegos *ngIf="juegoActivo === 'Ninguno'" (enviaNuevoJuego)="cambiaJuego($event)"></app-listajuegos>
+
+<app-juegoactivo  *ngIf="juegoActivo !== 'Ninguno'" [juegoActivo]="juegoActivo" (enviaNuevoJuego)="cambiaJuego($event)"></app-juegoactivo>

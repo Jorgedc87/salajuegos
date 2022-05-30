@@ -1,0 +1,57 @@
+<div class="game-body">
+
+    <div class="nuevo-juego" *ngIf="pptService.estadoJuego==='Inactivo'">
+        <div class="img-icons">
+            <img src="./assets/img/juegos/ppt/piedra.png" alt="">
+            <img src="./assets/img/juegos/ppt/papel.png" alt="">
+            <img src="./assets/img/juegos/ppt/tijeras.png" alt="">
+        </div>
+        <br>
+        <h1 for="">¿Nuevo Juego?</h1>
+        <br>
+        <button class="btn btn-nuevo" (click)="pptService.cambiaEstadoJuego('Activo')">Comenzar</button>
+    </div>
+
+    <div class="juego-ppt" *ngIf="pptService.estadoJuego==='Activo'">
+        <div class="game-score">
+            Rondas: {{pptService.rondas}}
+            <br>{{pptService.mensaje}}
+        </div>
+        <div class="game-view">
+            <div class="game-player game-selection">
+                <div>                    
+                    Player: {{pptService.scorePlayer}}
+                </div> 
+                <img src="./assets/img/juegos/ppt/{{pptService.seleccionPj}}.png" alt="" *ngIf="pptService.seleccionPj != ''">
+            </div>
+            <div class="game-division"></div>
+            <div class="game-ia game-selection">
+                <div>
+                    CPU: {{pptService.scoreIA}}
+                </div> 
+                <img src="./assets/img/juegos/ppt/{{pptService.seleccionIa}}.png" alt="" *ngIf="pptService.seleccionIa != ''">
+            </div>
+        </div>
+        <div class="game-bar">
+            <img src="./assets/img/juegos/ppt/piedra.png" alt="" class="icon-select" (click)="pptService.juegaPlayer('piedra')">
+            <img src="./assets/img/juegos/ppt/papel.png" alt="" class="icon-select" (click)="pptService.juegaPlayer('papel')">
+            <img src="./assets/img/juegos/ppt/tijeras.png" alt="" class="icon-select" (click)="pptService.juegaPlayer('tijeras')">
+        </div>
+    </div>
+
+    <div class="pantalla-resultado" *ngIf="pptService.estadoJuego == 'Finalizado'" >
+        <p>Player: {{pptService.scorePlayer}} vs CPU: {{pptService.scoreIA}}</p>
+        <div class="img-icons">
+            <img src="./assets/img/juegos/ppt/piedra.png" alt="">
+            <img src="./assets/img/juegos/ppt/papel.png" alt="">
+            <img src="./assets/img/juegos/ppt/tijeras.png" alt="">
+        </div>
+        <br>
+        <h3 *ngIf="pptService.scorePlayer==5">¡Felicitaciones, ganaste!</h3>
+        <h3 *ngIf="pptService.scoreIA==5">Perdiste. ¡Vuelve a intentarlo!</h3>
+        <br>
+        <button class="btn btn-nuevo" (click)="pptService.cambiaEstadoJuego('Activo')">Volver a jugar</button>
+        
+    </div>
+
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-topmenu',
@@ -7,13 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopmenuComponent implements OnInit {
 
-  constructor() { }
+  userLogged = this.authService.getUserLogged()
+
+  constructor(
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
   }
 
-  quitaMenu(){
-    
+  desloguea(){
+    this.authService.logout()
+  }
+
+  obtenerLogueado(){
+    this.authService.getUserLogged().subscribe(res =>{
+    })
   }
 
 }

@@ -4,15 +4,19 @@
       <div class="form">
         <div class="row">
             <i><span class="material-icons">email</span></i>
-          <input type="text" placeholder="Correo electrónico" required>
+          <input type="email" placeholder="Correo electrónico" [(ngModel)]="usuario.mail" required>
         </div>
         <div class="row">
             <i><span class="material-icons">key</span></i>
-          <input type="password" placeholder="Contraseña" required>
+          <input type="password" placeholder="Contraseña" [(ngModel)]="usuario.contrasena" required>
         </div>
+        <div class="pass text-center"><span class="link-div " style="color:black">{{error}}</span></div>
         <div class="pass"><span class="link-div" routerLink="/recupera">¿Olvidaste tu contraseña?</span></div>
         <div class="row button">
-          <input type="submit" value="Accede">
+          <input type="submit" value="Accede" (click)="ingresar()">
+        </div>
+        <div class="row button-google ">
+          <input type="submit" value="Accede con Google" (click)="ingresarConGoogle()">
         </div>
         <div class="signup-link">¿Nuevo usuario? <span class="link-div" routerLink="/registro">Registrate ahora</span>
       </div>
