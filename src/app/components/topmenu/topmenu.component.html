@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-menu" aria-label="Offcanvas navbar large">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="./assets/img/logocat.png" alt="">SalaDeJuegos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-white bg-menu"  tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+        <div class="offcanvas-header">
+            <a class="navbar-brand" href="#"><img src="./assets/img/logocat.png" alt=""  (click)="quitaMenu()">SalaDeJuegos</a>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav  flex-grow-1 pe-3">
+            <li class="nav-item">
+              <div class="nav-link" aria-current="page" routerLink="/inicio" routerLinkActive="active"  (click)="quitaMenu()">Inicio</div>
+            </li>
+            <li class="nav-item dropdown">
+              <div class="nav-link dropdown-toggle" id="menuresponsive" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Juegos
+              </div>
+              <ul class="dropdown-menu bg-menu" aria-labelledby="menuresponsive">
+                <li><div class="dropdown-item nav-link" routerLink="/juegos/piedrapapeltijera" routerLinkActive="active"  (click)="quitaMenu()">Piedra, Papel o Tijera</div></li>
+                <li><div class="dropdown-item nav-link" routerLink="/juegos/tateti" routerLinkActive="active"  (click)="quitaMenu()">TaTeTi</div></li>
+                <li><div class="dropdown-item nav-link" routerLink="/juegos/adivina" routerLinkActive="active"  (click)="quitaMenu()">Adivina el número</div></li>
+                <li><div class="dropdown-item nav-link" routerLink="/juegos/sudoku" routerLinkActive="active"  (click)="quitaMenu()">Sudoku</div></li>
+                <li><div class="dropdown-item nav-link" routerLink="/juegos/trivia" routerLinkActive="active"  (click)="quitaMenu()">Trivia</div></li>
+                <hr>
+                <li><div class="dropdown-item nav-link" routerLink="/juegos" style="color: gray;"  (click)="quitaMenu()">Todos los juegos</div></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/quien-soy" routerLinkActive="active"  (click)="quitaMenu()">Quien Soy</a>
+              </li>
+          </ul>
+          <div class="d-flex mt-3 mt-lg-0" role="search">
+            <button class="btn btn-login" routerLink="/login" (click)="quitaMenu()">Ingresa</button>
+            <button class="btn btn-register" routerLink="/registro"  (click)="quitaMenu()">Registrate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

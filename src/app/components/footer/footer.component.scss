@@ -1,0 +1,22 @@
+@use '../../../assets/scss/variables.scss' as var;
+
+footer{
+    font-family: var.$principal;
+}
+
+.nav-link {
+  color: rgb(71, 71, 71) !important;
+
+  &:hover{
+      color: var.$bg-menu !important;
+      cursor: pointer;
+  }
+}
+
+.border-top-footer{
+    border-top: 1px solid gray;
+}
+
+.logo{
+    max-width: 100px;
+}

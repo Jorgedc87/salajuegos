@@ -1,0 +1,49 @@
+@use '../../../assets/scss/variables.scss' as var;
+
+.juego-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+
+    .juego-item{
+        background-color: var.$naranja;
+        border-radius: 10px;
+        font-size: 12px;
+        margin: 30px 15px;
+
+        .juego-nombre{
+            padding-top: 10px;
+            color: rgb(39, 39, 39);
+            text-transform: uppercase;
+            font-family: var.$logo;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .juego-img{
+            width: 200px;
+            display: absolute;
+            overflow: hidden;
+            
+            img{
+                width: 200px;
+                border-radius: 10px 10px 0 0;
+                display: relative;
+
+                
+            }
+        } 
+
+        &:hover{
+            
+                background-color: var.$hv-color;
+            
+
+            img{
+                transform: scale(1.2);
+                transition: transform .5s; 
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,101 @@
+@use '../../../assets/scss/variables.scss' as var;
+
+.navbar {
+    margin-bottom: 20px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+
+    img{
+        max-height: 50px;
+        margin-right: 20px;
+    }
+
+    .navbar-brand{
+        font-family: var.$logo;
+        margin-right: 100px;
+        margin-left: 30px;
+
+        &:hover{
+            color: var.$hv-color
+        }
+    }
+
+    .btn-login{
+        color: white;
+        border: 1px solid white;
+        margin-right: 10px;
+        text-transform: uppercase;
+        transition: all .5s;
+        font-family: var.$secundaria;
+
+        &:hover{
+            background-color: white;
+            color:#383838;
+            transition: all .5s;
+        }
+    }
+    
+    .btn-register{
+        color: #383838;
+        border: 1px solid #ff8b1f;
+        background-color: #ff9f46;
+        text-transform: uppercase;
+        transition: all .5s;
+        font-family: var.$secundaria;
+        &:hover{
+            background-color: var.$hv-color;
+            color:#383838;
+            transition: all .5s;
+            border: 1px solid var.$hv-color;
+        }
+    }
+
+    .dropdown-menu{
+        background-color: #ffffff00;
+        border: none;
+
+        .dropdown-item{
+
+            color: rgba(255, 255, 255, 0.75);
+
+            &:hover{
+                background-color: #803a9c;
+                cursor: pointer;
+                color: var.$hv-color;
+            }
+
+        }
+        .active{
+            background-color: #71298d !important;
+            color:var.$hv-color;
+        }
+    }
+    
+}
+
+.active{
+    // border-bottom: var.$hv-color 3px solid !important;
+    color: var.$hv-color !important;
+
+    &:hover{
+        color: var.$hv-color2 !important;
+    }
+}
+.navbar-nav{
+    background: #71298d !important;
+}
+
+.bg-menu{
+    background: #71298d !important;
+}
+
+.nav-item:hover{
+    cursor: pointer;
+    color: var.$hv-color;
+}
+
+.offcanvas-body{
+    font-family: var.$principal;
+}
