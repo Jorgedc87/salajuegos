@@ -85,7 +85,7 @@ body{
 .wrapper .form .pass a:hover{
   text-decoration: underline;
 }
-.wrapper .form .button input{
+.wrapper .form .button button{
   color: #fff;
   font-size: 20px;
   font-weight: 500;
@@ -123,4 +123,9 @@ body{
     &:hover{
         color: var.$naranja;
     }
+}
+
+.btn-reg{
+  color: rgb(255, 255, 255) !important;
+  background-color: var.$bg-menu;
 }

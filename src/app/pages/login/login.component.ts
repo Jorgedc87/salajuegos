@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -10,16 +12,22 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  public forma!: FormGroup
   usuario = new Usuario()
   error = ''
 
+
   constructor(
     private authService: AuthService,
-    private route: Router
+    private route: Router,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    
+    this.forma = this.fb.group({
+      'contraseña': ['', [Validators.required, Validators.min(6), Validators.max(16)]],
+      'email': ['', [Validators.required, Validators.email]]
+    });
   }
 
   ingresar(){
@@ -38,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.route.navigate(['inicio'])
         this.error = ''
       })
-    
+
   }
 
 }

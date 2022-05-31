@@ -1,28 +1,47 @@
 <div class="container ">
-    <div class="wrapper">
-      <div class="title"><span>Registro</span></div>
-      <div class="form">
-        <!-- <div class="row">
-            <i><span class="material-icons">person</span></i>
-          <input type="text" placeholder="Nombre completo" required>
-        </div> -->
-        <div class="row">
+  <div class="wrapper">
+
+    <div class="title"><span>Registro</span></div>
+    <form [formGroup]="forma" (ngSubmit)="aceptar()">
+    <div class="form">
+      <!-- <div class="row">
+        <i><span class="material-icons">person</span></i>
+            <input type="text" placeholder="Nombre completo" required>
+          </div> -->
+          <div class="row">
             <i><span class="material-icons">email</span></i>
-          <input type="email" placeholder="Correo electrónico" [(ngModel)]="usuario.mail" required>
-        </div>
-        <div class="row">
+            <input type="email" placeholder="Correo electrónico" formControlName="email" required>
+          </div>
+          <div class="row">
             <i><span class="material-icons">key</span></i>
-          <input type="password" placeholder="Contraseña" [(ngModel)]="usuario.contrasena" required>
-        </div>
-        <div class="row">
+            <input type="password" placeholder="Contraseña" formControlName="contraseña">
+          </div>
+          <div class="row">
             <i><span class="material-icons">key</span></i>
-          <input type="password" placeholder="Repita contraseña" [(ngModel)]="passwordRepeat" required>
+            <input type="password" placeholder="Repita contraseña" formControlName="contraseña2">
+          </div>
+            <p>{{error}}</p>
+            <small class="invalid"
+              *ngIf="forma.controls['email'].errors?.['required'] && forma.controls['email'].touched">
+
+              El email es requerido
+              <br>
+            </small>
+            <small class="invalid"
+              *ngIf="forma.controls['contraseña2'].errors?.['required'] && forma.controls['contraseña2'].touched">
+              Coloca una contraseña
+              <br>
+            </small>
+            <small class="invalid"
+              *ngIf="forma.controls['contraseña2'].errors?.['required'] && forma.controls['contraseña2'].touched">
+              Repita la contraseña
+            </small>
+          <div class="row  mt-4">
+            <button class="btn btn-reg" type="submit" [disabled]="forma.invalid">Registrate</button>
+          </div>
+          <div class="signup-link">¿Ya tienes usuario? <span class="link-div" routerLink="/login">Ingresa ahora</span>
+          </div>
         </div>
-        <p class="text-center">{{error}}</p>
-        <div class="row button mt-4">
-          <input type="submit" value="Registrate" (click)="registro()">
-        </div>
-        <div class="signup-link">¿Ya tienes usuario? <span class="link-div" routerLink="/login">Ingresa ahora</span>
-      </div>
-    </div>
+      </form>
+
   </div>
