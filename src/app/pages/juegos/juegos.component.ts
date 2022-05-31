@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JuegosComponent implements OnInit {
 
-  juegoActivo: string = 'Ninguno'
+  juegoActivo: string = 'Tateti'
 
   constructor() { }
 

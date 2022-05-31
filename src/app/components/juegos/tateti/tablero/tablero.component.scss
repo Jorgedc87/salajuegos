@@ -1,0 +1,40 @@
+@use '../../../../../assets/scss/variables' as var;
+
+
+main {
+    width: 330px;
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    grid-template-rows: repeat(3, 110px);
+    grid-gap: 0px;
+    margin: 20px auto;
+    justify-content: center;
+    // background-color: red;
+    background: url('../../../../../assets/img/juegos/tateti/tablero.png');
+    background-size: contain;
+    border-radius: 10px;
+}
+  
+app-square {
+    border: none;
+    height: 110px;
+}
+
+.btn-newgame{
+    background-color: var.$bg-menu;
+    color: white;
+    font-family: var.$secundaria
+}
+
+.title{
+    background-color: rgb(56, 56, 56);
+    color: var.$hv-color;
+    font-size: 20px !important;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px dashed var.$hv-color;
+}
+
+.todo{
+    font-family: var.$secundaria;
+}

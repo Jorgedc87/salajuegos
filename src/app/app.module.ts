@@ -20,6 +20,8 @@ import { JuegoactivoComponent } from './components/juegos/juegoactivo/juegoactiv
 import { firebase } from 'src/environments/firebase';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
+import { TableroComponent } from './components/juegos/tateti/tablero/tablero.component';
+import { SquareComponent } from './components/juegos/tateti/square/square.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { AngularFireModule } from '@angular/fire/compat';
     PiedraPapelTijeraComponent,
     TatetiComponent,
     ListajuegosComponent,
-    JuegoactivoComponent
+    JuegoactivoComponent,
+    TableroComponent,
+    SquareComponent
   ],
   imports: [
     BrowserModule,
