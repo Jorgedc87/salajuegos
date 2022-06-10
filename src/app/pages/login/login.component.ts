@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
     if(this.usuario.mail != '' && this.usuario.contrasena != ''){
       this.authService.login(this.usuario).then(res =>{
         this.route.navigate(['inicio'])
-        this.error = ''
+        console.log(res)
+      }).catch(error => {
+        console.log(error.code)
       })
     }else{
       this.error = 'Complete todos los datos'

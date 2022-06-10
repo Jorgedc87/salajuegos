@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { TableroComponent } from './components/juegos/tateti/tablero/tablero.component';
 import { SquareComponent } from './components/juegos/tateti/square/square.component';
+import { TriviaComponent } from './components/juegos/trivia/trivia.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { SquareComponent } from './components/juegos/tateti/square/square.compon
     ListajuegosComponent,
     JuegoactivoComponent,
     TableroComponent,
-    SquareComponent
+    SquareComponent,
+    TriviaComponent
   ],
   imports: [
     BrowserModule,

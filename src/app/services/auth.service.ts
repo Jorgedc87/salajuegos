@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Usuario } from '../models/usuario.model';
 import firebase from 'firebase/compat/app'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +10,17 @@ import firebase from 'firebase/compat/app'
 export class AuthService {
 
   constructor(
+    private route: Router,
     private authF: AngularFireAuth
   ) { }
 
-  async register(usuario: Usuario){
+   register(usuario: Usuario){
     try{
-      return await this.authF.createUserWithEmailAndPassword(usuario.mail, usuario.contrasena)
+      return  this.authF.createUserWithEmailAndPassword(usuario.mail, usuario.contrasena)
+
     }
     catch (err){
-      console.log('Error en login: ', err)
+
       return null
     }
   }

@@ -34,16 +34,21 @@ export class RegisterComponent implements OnInit {
 
   public aceptar(): void {
     if(this.forma.value['contraseña'] === this.forma.value['contraseña2']){
-      console.log(this.forma.value['contraseña'])
-      console.log('Entró')
       this.usuario.mail = this.forma.value['email']
       this.usuario.contrasena = this.forma.value['contraseña']
       this.authService.register(this.usuario).then(res =>{
-        this.error = ''
-          this.route.navigate(['inicio'])
-        })
+        console.log('Registrado')
+        this.route.navigate(['inicio'])
+      }).catch(error => {
+        switch(error.code){
+          case 'auth/email-already-in-use':
+            this.error = 'El correo ya existe'
 
-      }else{
+            break;
+        }
+      })
+
+    }else{
       this.error = 'Las contraseñas no coinciden'
     }
 
@@ -55,7 +60,9 @@ export class RegisterComponent implements OnInit {
       this.usuario.mail = this.forma.value['email']
       this.usuario.contrasena = this.forma.value['contraseña']
       this.authService.register(this.usuario).then(res =>{
-        this.route.navigate(['inicio'])
+        // this.route.navigate(['inicio'])
+      }).catch(error => {
+        console.log(error)
       })
 
     }else{
