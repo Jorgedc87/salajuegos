@@ -9,11 +9,14 @@ import { Preguntas } from 'src/app/models/trivia/preguntas.model';
 })
 export class TriviaComponent implements OnInit {
   preguntaElegida
-  preguntasJugadas: Preguntas[]
+  preguntasJugadas: Preguntas[] = []
   puntos = 0
+  cantidad = 0
+  max = 9
+  array = []
   preguntas = [
     {"id":"1","pregunta":" La capital de Brasil es ...","respuestas":["Nueva York ","Brasilia ","México ","Sofía "],"contestacion":[" Incorrecto."," Correcto!"," Incorrecto."," Incorrecto."],"correcta":1},
-{"id":"2","pregunta":" La capital de Bulgaria es...","respuestas":["Sofía ","Ottawa ","México ","Sofía "],"contestacion":[" Correcto!"," Incorrecto."," Incorrecto."," Incorrecto."],"correcta":0},
+{"id":"2","pregunta":" La capital de Bulgaria es...","respuestas":["Sofía ","Ottawa ","México ","Roma"],"contestacion":[" Correcto!"," Incorrecto."," Incorrecto."," Incorrecto."],"correcta":0},
 {"id":"3","pregunta":" La capital de Camerún es...","respuestas":["Sofía ","Ottawa ","Rio de Janeiro ","Yaundé "],"contestacion":[" Incorrecto."," Incorrecto."," Incorrecto."," Correcto!"],"correcta":3},
 {"id":"4","pregunta":" La capital de Canadá es...","respuestas":["Ottawa ","Sofía ","México ","Madrid "],"contestacion":[" Correcto!"," Incorrecto."," Incorrecto."," Incorrecto."],"correcta":0},
 {"id":"5","pregunta":" La capital de Chile es...","respuestas":["Londres ","Sofía ","Santiago ","Madrid "],"contestacion":[" Incorrecto."," Incorrecto."," Correcto!"," Incorrecto."],"correcta":2},
@@ -27,20 +30,41 @@ export class TriviaComponent implements OnInit {
 
   ngOnInit(): void {
     this.cambiaPregunta()
+    // this.pruebaRandom()
+  }
+
+  pruebaRandom(){
+    
+
+    while(this.array.length < 9){
+      let randomNumber = Math.floor(Math.random() * ( 0 - this.max)) * -1
+      
+      if(!this.array.includes(randomNumber)){
+        this.array.push(randomNumber)
+      }
+      
+    }
+    
+    console.log(this.array)
+
+
   }
 
   cambiaPregunta(){
-    let randomNumber = Math.floor(Math.random() * (1 - 10)) * -1
-    let random = randomNumber.toString()
-    for(let pregunta of this.preguntas){
-      if(pregunta.id == random){
+    let randomNumber = Math.floor(Math.random() * ( 0 - this.preguntas.length)) * -1
+    // let random = randomNumber.toString()
+    for(let pregunta of this.preguntas){ // SELECT * FROM PREGUNTAS
+      
+      if(this.preguntas.indexOf(pregunta)+1 == randomNumber){
         this.preguntaElegida = pregunta
-        if(this.preguntasJugadas.includes(this.preguntaElegida)){
-
-        }
+        this.preguntas.splice(this.preguntas.indexOf(pregunta),1)
+        console.log(this.preguntas)
+        this.cantidad++
+      }else{
+        console.log("Random: ", randomNumber, " && Pregunta: ", this.preguntas.indexOf(pregunta)+1)
       }
     }
-    this.preguntasJugadas.push()
+    // this.preguntasJugadas.push()
   }
 
   puntoObtenido(respuesta: number){
@@ -48,10 +72,11 @@ export class TriviaComponent implements OnInit {
       this.puntos++
     }
 
-
-    console.log(respuesta)
-
-    this.cambiaPregunta()
+    if(this.preguntas.length > 0){
+      this.cambiaPregunta()
+    }else{
+      alert('Fin del juego')
+    }
   }
 
 }

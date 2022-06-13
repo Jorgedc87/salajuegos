@@ -3,8 +3,8 @@ export class Preguntas{
   pregunta: string
   respuestas: string[]
   correcta: number
-  dificultad: string
-  categoria: string
+  // dificultad: string
+  // categoria: string
 
 
   constructor(){
