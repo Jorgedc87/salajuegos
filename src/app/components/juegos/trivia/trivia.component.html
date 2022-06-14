@@ -1,13 +1,17 @@
 <div  class="ventana-juego" >
 
   <div class="ventana-partida">
-    Puntos: {{ puntos }}<br>
-    <!-- Preguntas: {{ cantidad }} -->
+    Puntos: {{ puntos }} -
+    Tiempo Restante: <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown><br>
+    
+
   </div>
 
   <div *ngIf="preguntaElegida != '' && estadoJuego == 'Jugando'">
-
     <div class="ventana-pregunta">
+      <!-- <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{progress}}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div> -->
       {{preguntaElegida.pregunta}}
     </div>
 
@@ -15,7 +19,7 @@
       <div class="respuestas">
         <div *ngFor="let respuesta of preguntaElegida.respuestas">
           
-          <button class="btn btn-success mx-2" (click)="puntoObtenido(respuesta)">{{ respuesta }}</button>
+          <button class="btn btn-success mx-2" (click)="cd.restart()" (click)="puntoObtenido(respuesta)">{{ respuesta }}</button>
         </div>
       </div>
       <div class="info">
@@ -31,13 +35,13 @@
     <div class="ventana-pregunta">
       <div>Finalizó la partida.
         <br>
-        Has obtenido {{puntos}} <b *ngIf="puntos == 1">punto.</b><b *ngIf="puntos != 1">puntos.</b>
+        Has obtenido {{puntos}} <b *ngIf="puntos == 1">punto</b><b *ngIf="puntos != 1">puntos</b> en {{tiempoDeJuego}} segundos
       </div>
     </div>
 
     <div class="ventana-respuestas">
       
-     <button class="btn btn-primary" (click)="nuevoJuego()">Volver a jugar</button>
+     <button class="btn btn-primary"  (click)="cd.restart()" (click)="nuevoJuego()">Volver a jugar</button>
     </div>
 
 

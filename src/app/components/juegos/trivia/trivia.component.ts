@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { fromEventPattern } from 'rxjs';
 import { Preguntas } from 'src/app/models/trivia/preguntas.model';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TriviaService } from 'src/app/services/trivia.service';
 import { Pregunta } from 'src/app/models/pregunta.model';
+import { interval, timer } from 'rxjs';
+import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
+
 
 @Component({
   selector: 'app-trivia',
@@ -16,6 +19,10 @@ export class TriviaComponent implements OnInit {
   cantidad
   preguntas
   estadoJuego = 'Jugando'
+  tiempoDeJuego = 0
+  config: CountdownConfig = {}
+  notify = '';
+  progress
 
   constructor(
     private triviaService: TriviaService,
@@ -27,6 +34,11 @@ export class TriviaComponent implements OnInit {
   }
 
   nuevoJuego(){
+    this.config = { 
+      leftTime: 10, notify: [10, 9,8,7,6,5,4,3,2,1],
+      formatDate: ({ date }) => `${date / 1000}` 
+    }
+    this.tiempoDeJuego = 0
     this.puntos = 0
     this.cantidad = 0
     this.preguntaElegida = []
@@ -51,18 +63,24 @@ export class TriviaComponent implements OnInit {
         // console.log("Random: ", randomNumber, " && Pregunta: ", this.preguntas.indexOf(pregunta)+1)
       }
     }
+
   }
 
   puntoObtenido(respuesta: number){
     if(this.preguntaElegida.correcta === respuesta){
       this.puntos++
-    }
-
-    if(this.preguntas.length > 0){
-      this.cambiaPregunta()
+      if(this.preguntas.length > 0){
+        this.cambiaPregunta()
+      }else{
+        this.estadoJuego = 'Finalizado'
+        this.config = {}
+      }
     }else{
       this.estadoJuego = 'Finalizado'
+      this.config = {}
     }
+
+    
   }
 
   shuffleArray(array: []) {
@@ -72,6 +90,20 @@ export class TriviaComponent implements OnInit {
     }
 
     return array
+  }
+
+  handleEvent(e: CountdownEvent) {
+    this.notify = e.action.toUpperCase();
+    // console.log(this.tiempoDeJuego)
+    if (e.action === 'notify') {
+      this.notify += ` - ${e.left} ms`;
+      this.tiempoDeJuego += 1
+      
+    }
+    if(e.status === 3){
+      this.estadoJuego = 'Finalizado'
+    }
+    // console.log('Quedan ', e.left/1000 , ' segundos');
   }
 
 }

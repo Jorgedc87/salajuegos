@@ -45,6 +45,7 @@ export class TriviaEnviapreguntaComponent implements OnInit {
     this.triviaService.enviaPregunta(form.value)
 
     this.formReset()
+    
   }
 
   formReset(){
@@ -60,4 +61,5 @@ export class TriviaEnviapreguntaComponent implements OnInit {
       'nombre': ['', [Validators.required]]
     })
   }
+
 }

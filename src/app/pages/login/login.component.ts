@@ -43,8 +43,6 @@ export class LoginComponent implements OnInit {
   ingresar(){
     // console.log(this.forma.get('contraseña').value)
     if(this.forma.get('contraseña').value != '' && this.forma.get('email').value != ''){
-      console.log('entramo')
-      console.log(this.usuario)
       this.authService.login(this.usuario).then(res =>{
         this.route.navigate(['inicio'])
         console.log(res)
