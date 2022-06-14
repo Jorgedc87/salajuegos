@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   usuario = new Usuario()
   passwordRepeat = ''
   error = ''
+  fecha: Date
 
   constructor(
     private authService: AuthService,
@@ -29,41 +30,20 @@ export class RegisterComponent implements OnInit {
     this.forma = this.fb.group({
       'contraseña': ['', [Validators.required, Validators.min(6), Validators.max(16)]],
       'email': ['', [Validators.required, Validators.email]],
+      'nombre': ['', Validators.required],
       'contraseña2': ['', [Validators.required, Validators.min(6), Validators.max(16)]]
     });
 
   }
 
-  // public aceptar(): void {
-  //   if(this.forma.value['contraseña'] === this.forma.value['contraseña2']){
-  //     this.usuario.mail = this.forma.value['email']
-  //     this.usuario.contrasena = this.forma.value['contraseña']
-  //     console.log('Prueba: ', this.usuario)
-  //     this.usuarioService.addUser(this.usuario);
-  //     this.authService.register(this.usuario).then(res =>{
-  //       console.log('Registrado')
-  //       this.route.navigate(['inicio'])
-  //     }).catch(error => {
-  //       switch(error.code){
-  //         case 'auth/email-already-in-use':
-  //           this.error = 'El correo ya existe'
-
-  //           break;
-  //       }
-  //     })
-
-  //   }else{
-  //     this.error = 'Las contraseñas no coinciden'
-  //   }
-
-  // }
-
   async aceptar() {
 
     if(this.forma.value['contraseña'] === this.forma.value['contraseña2']){
       this.forma.removeControl('contraseña2')
+      this.forma.addControl('fechaCreacion', new FormControl(this.fecha = new Date ()))
       await this.usuarioService.addUser(this.forma.value)
       this.usuario.mail = this.forma.value['email']
+      this.usuario.nombre = this.forma.value['nombre']
       this.usuario.contrasena = this.forma.value['contraseña']
 
       this.authService.register(this.usuario).then(res =>{

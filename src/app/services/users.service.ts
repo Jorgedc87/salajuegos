@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, query, where } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { Usuario } from '../models/usuario.model';
 
 
@@ -15,7 +16,14 @@ export class UsersService {
     return addDoc(userRef, usuario)
   }
 
-  getUsers(){
-
+  getUsers(): Observable<Usuario[]>{
+    const userRef = collection(this.firestore, 'users')
+    return collectionData(userRef, { idField: 'mail'}) as Observable<Usuario[]>
+  }
+  getUserInfo(email: string){
+    const userRef = collection(this.firestore, 'users')
+    // return collectionData(userRef, { idField: 'mail'}) as Observable<any>
+    return query(userRef, where("email", "==", email))
+    // return q
   }
 }

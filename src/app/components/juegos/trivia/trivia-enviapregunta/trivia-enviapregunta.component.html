@@ -1,0 +1,55 @@
+<div class="container-form">
+    <div class="wrapper">
+        <form class="pb-4" [formGroup]="forma">
+                <div class="row mt-2">
+                    <h3>Envia tu pregunta</h3>
+                </div>
+                <div class="form-group">
+                    <label for="pregunta" class="">Pregunta</label>
+                    <input formControlName="pregunta" class="form-control" type="text" name="pregunta" id="pregunta" placeholder="Ingresa la pregunta">
+                </div>
+                <div class="row mt-3" formGroupName="respuestas">
+                    
+                    <div class="form-group col-sm-6">
+                        <label for="respuesta1" class="">Respuesta 1 (Correcta)</label>
+                        <input formControlName="respuesta1" class="form-control" type="text" name="respuesta1" id="respuesta1" placeholder="Respuesta 1" [(ngModel)]="respuestas[0]">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="respuesta2" class="">Respuesta 2</label>
+                        <input formControlName="respuesta2" class="form-control" type="text" name="respuesta2" id="respuesta2" placeholder="Respuesta 2" [(ngModel)]="respuestas[1]">
+                    </div>
+                </div>
+                <div class="row mt-3" formGroupName="respuestas">
+                    
+                    <div class="form-group col-sm-6">
+                        <label for="respuesta3" class="">Respuesta 3</label>
+                        <input formControlName="respuesta3" class="form-control" type="text" name="respuesta3" id="respuesta3" placeholder="Respuesta 3" [(ngModel)]="respuestas[2]">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="respuesta4" class="">Respuesta 4</label>
+                        <input formControlName="respuesta4" class="form-control" type="text" name="respuesta4" id="respuesta4" placeholder="Respuesta 4" [(ngModel)]="respuestas[3]">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="form-group col-sm-6">
+                        <label for="categoria" class="">Categoría</label>
+                        <select formControlName="categoria" class="form-control" name="categoria" id="categoria">
+                            <option value="Ciencia">Ciencia</option>
+                            <option value="Deportes">Deportes</option>
+                            <option value="Espectáculo">Espectáculo</option>
+                            <option value="Geografía">Geografía</option>
+                            <option value="Historia">Historia</option>
+                            <option value="Interés General" selected>Interés general</option>
+                            <option value="Música">Música</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="nombre" class="">Nombre de quien envía</label>
+                        <input formControlName="nombre" class="form-control" type="text" name="nombre" id="nombre" placeholder="Persona que lo envía">
+                    </div>
+                </div>
+                <small>*Las preguntas serán revisadas y posteriormente aceptadas</small><br>
+                <button class="btn btn-primary mt-4" type="submit" (click)="enviaPregunta()" [disabled]="this.forma.invalid">Enviar</button>
+        </form>
+    </div>
+</div>

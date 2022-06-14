@@ -14,22 +14,14 @@
             <li class="nav-item">
               <div class="nav-link" aria-current="page" routerLink="/inicio" routerLinkActive="active"  >Inicio</div>
             </li>
-            <li class="nav-item dropdown" *ngIf="userLogged|async as user">
-              <div class="nav-link dropdown-toggle" id="menuresponsive" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li class="nav-item" *ngIf="userLogged|async as user">
+              <div routerLinkActive="active" class="nav-link" id="menuresponsive" role="button" data-bs-toggle="dropdown" aria-expanded="false" routerLink="/juegos">
                 Juegos
               </div>
-              <ul class="dropdown-menu bg-menu" aria-labelledby="menuresponsive">
-                <li><div class="dropdown-item nav-link" routerLink="/juegos/piedrapapeltijera" routerLinkActive="active"  >Piedra, Papel o Tijera</div></li>
-                <li><div class="dropdown-item nav-link" routerLink="/juegos/tateti" routerLinkActive="active">TaTeTi</div></li>
-                <li><div class="dropdown-item nav-link" routerLink="/juegos/adivina" routerLinkActive="active">Adivina el número</div></li>
-                <li><div class="dropdown-item nav-link" routerLink="/juegos/sudoku" routerLinkActive="active">Sudoku</div></li>
-                <li><div class="dropdown-item nav-link" routerLink="/juegos/trivia" routerLinkActive="active">Trivia</div></li>
-                <hr>
-                <li><div class="dropdown-item nav-link" routerLink="/juegos" style="color: gray;"  >Todos los juegos</div></li>
-              </ul>
+
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/quien-soy" routerLinkActive="active"  >Quien Soy</a>
+                <a class="nav-link" routerLink="/quien-soy" routerLinkActive="active">Quien Soy</a>
               </li>
           </ul>
           <div class="d-flex mt-3 mt-lg-0" *ngIf="!(userLogged|async)">

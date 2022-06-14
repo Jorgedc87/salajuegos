@@ -6,6 +6,6 @@ export class Usuario{
     constructor(){
         this.mail = ''
         this.contrasena = ''
-        this.nombre = 'Jorge'
+        this.nombre = ''
     }
 }

@@ -32,13 +32,21 @@
 
   .ventana-respuestas{
     border-top: 5px double gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: 40px;
     font-size: 20px;
     font-family: var.$secundaria;
     width: 100%;
     height: 150px;
     background-color: rgb(211, 211, 211);
+
+    .respuestas{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .info{
+      padding-top: 40px;
+      font-size: 14px;
+    }
   }
 }

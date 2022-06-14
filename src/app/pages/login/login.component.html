@@ -6,11 +6,11 @@
         <div class="form">
           <div class="row">
             <i><span class="material-icons">email</span></i>
-            <input type="email" placeholder="Correo electrónico" id="email" formControlName="email" [(ngModel)]="email">
+            <input type="email" placeholder="Correo electrónico" id="email" formControlName="email" [(ngModel)]="usuario.mail">
           </div>
           <div class="row">
             <i><span class="material-icons">key</span></i>
-            <input type="password" placeholder="Contraseña" formControlName="contraseña">
+            <input type="password" placeholder="Contraseña" formControlName="contraseña" [(ngModel)]="usuario.contrasena">
           </div>
           <div class="pass text-center"><span class="link-div " style="color:black">{{error}}</span></div>
           <div class="pass"><span class="link-div" routerLink="/recupera">¿Olvidaste tu contraseña?</span></div>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="text-center py-2">
-          <button class="btn btn-reg mx-auto px-4" (click)="rellenaDatos()">Test</button>
         </div>
       </form>
+      <button class="btn btn-reg mx-auto px-4" (click)="rellenaDatos()" [disabled]="disable!=1">Test</button>
   </div>

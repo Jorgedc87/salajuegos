@@ -5,16 +5,39 @@
     <!-- Preguntas: {{ cantidad }} -->
   </div>
 
-  <div *ngIf="preguntaElegida != ''">
+  <div *ngIf="preguntaElegida != '' && estadoJuego == 'Jugando'">
 
     <div class="ventana-pregunta">
       {{preguntaElegida.pregunta}}
     </div>
 
     <div class="ventana-respuestas">
-      <div *ngFor="let respuesta of preguntaElegida.respuestas; let i = index">
-        <button class="btn btn-success mx-2" (click)="puntoObtenido(i)">{{ respuesta }}</button>
+      <div class="respuestas">
+        <div *ngFor="let respuesta of preguntaElegida.respuestas">
+          
+          <button class="btn btn-success mx-2" (click)="puntoObtenido(respuesta)">{{ respuesta }}</button>
+        </div>
       </div>
+      <div class="info">
+        Categoría: {{preguntaElegida.categoria}} - Enviada por: {{preguntaElegida.nombre}}
+      </div>
+    </div>
+
+
+  </div>
+
+  <div *ngIf="estadoJuego == 'Finalizado'">
+
+    <div class="ventana-pregunta">
+      <div>Finalizó la partida.
+        <br>
+        Has obtenido {{puntos}} <b *ngIf="puntos == 1">punto.</b><b *ngIf="puntos != 1">puntos.</b>
+      </div>
+    </div>
+
+    <div class="ventana-respuestas">
+      
+     <button class="btn btn-primary" (click)="nuevoJuego()">Volver a jugar</button>
     </div>
 
 

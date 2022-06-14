@@ -26,6 +26,7 @@ import { TriviaComponent } from './components/juegos/trivia/trivia.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { TriviaEnviapreguntaComponent } from './components/juegos/trivia/trivia-enviapregunta/trivia-enviapregunta.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     JuegoactivoComponent,
     TableroComponent,
     SquareComponent,
-    TriviaComponent
+    TriviaComponent,
+    TriviaEnviapreguntaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,14 @@
+@use '../../../../../assets/scss/variables' as var;
+
+
+.container-form{
+    background-color: var.$bg-card;
+    border: 2px solid black;
+    max-width: 480px;
+    margin: 10px auto;
+
+    form{
+        max-width: 80%;
+        margin: 0 auto;
+    }
+}
