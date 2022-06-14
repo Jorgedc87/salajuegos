@@ -23,6 +23,9 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { TableroComponent } from './components/juegos/tateti/tablero/tablero.component';
 import { SquareComponent } from './components/juegos/tateti/square/square.component';
 import { TriviaComponent } from './components/juegos/trivia/trivia.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -51,7 +54,9 @@ import { TriviaComponent } from './components/juegos/trivia/trivia.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(firebase)
+    AngularFireModule.initializeApp(firebase),
+    provideFirebaseApp(() => initializeApp(firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

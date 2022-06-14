@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   public forma!: FormGroup
   usuario = new Usuario()
   error = ''
+  email
+  password
 
 
   constructor(
@@ -49,6 +51,10 @@ export class LoginComponent implements OnInit {
         this.error = ''
       })
 
+  }
+
+  rellenaDatos(){
+    this.email = 'asdf'
   }
 
 }

@@ -6,7 +6,7 @@
         <div class="form">
           <div class="row">
             <i><span class="material-icons">email</span></i>
-            <input type="email" placeholder="Correo electrónico" id="email" formControlName="email">
+            <input type="email" placeholder="Correo electrónico" id="email" formControlName="email" [(ngModel)]="email">
           </div>
           <div class="row">
             <i><span class="material-icons">key</span></i>
@@ -36,6 +36,9 @@
             </small>
           <div class="signup-link">¿Nuevo usuario? <span class="link-div" routerLink="/registro">Registrate ahora</span>
           </div>
+        </div>
+        <div class="text-center py-2">
+          <button class="btn btn-reg mx-auto px-4" (click)="rellenaDatos()">Test</button>
         </div>
       </form>
   </div>

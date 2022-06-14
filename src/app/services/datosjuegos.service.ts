@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { Firestore, getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, DocumentData, CollectionReference, onSnapshot, QuerySnapshot } from 'firebase/firestore'
+import { Firestore, getFirestore, collection, DocumentData, CollectionReference, onSnapshot, QuerySnapshot } from 'firebase/firestore'
 import { AngularFirestore } from '@angular/fire/compat/firestore'
 import { Subject } from 'rxjs';
 import { firebase } from '../../environments/firebase';
@@ -34,19 +34,20 @@ export class DatosjuegosService {
   }
 
   // SET GAME
-  setScores(juego: Jugador){
-    return new Promise<any>( ( resolve, reject) =>{
-      this.angularFirestore
-      .collection(juego.juego)
-      .add({
-        juego: juego.juego,
-        victorias: juego.victorias,
-        derrotas: juego.derrotas,
-        mail: juego.mail
-      })
-      .then(response => {
-        console.log(response)
-      })
-    })
-  }
+  // setScores(juego: Jugador){
+  //   return new Promise<any>( ( resolve, reject) =>{
+  //     this.angularFirestore
+  //     .collection(juego.juego)
+  //     .add({
+  //       juego: juego.juego,
+  //       victorias: juego.victorias,
+  //       derrotas: juego.derrotas,
+  //       mail: juego.mail
+  //     })
+  //     .then(response => {
+  //       console.log(response)
+  //     })
+  //   })
+  // }
+
 }

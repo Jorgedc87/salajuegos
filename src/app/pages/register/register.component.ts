@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private usuarioService: UsersService,
     private route: Router,
     private fb: FormBuilder
   ) { }
@@ -32,26 +34,52 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  public aceptar(): void {
+  // public aceptar(): void {
+  //   if(this.forma.value['contraseña'] === this.forma.value['contraseña2']){
+  //     this.usuario.mail = this.forma.value['email']
+  //     this.usuario.contrasena = this.forma.value['contraseña']
+  //     console.log('Prueba: ', this.usuario)
+  //     this.usuarioService.addUser(this.usuario);
+  //     this.authService.register(this.usuario).then(res =>{
+  //       console.log('Registrado')
+  //       this.route.navigate(['inicio'])
+  //     }).catch(error => {
+  //       switch(error.code){
+  //         case 'auth/email-already-in-use':
+  //           this.error = 'El correo ya existe'
+
+  //           break;
+  //       }
+  //     })
+
+  //   }else{
+  //     this.error = 'Las contraseñas no coinciden'
+  //   }
+
+  // }
+
+  async aceptar() {
+
     if(this.forma.value['contraseña'] === this.forma.value['contraseña2']){
+      this.forma.removeControl('contraseña2')
+      await this.usuarioService.addUser(this.forma.value)
       this.usuario.mail = this.forma.value['email']
       this.usuario.contrasena = this.forma.value['contraseña']
+
       this.authService.register(this.usuario).then(res =>{
         console.log('Registrado')
         this.route.navigate(['inicio'])
       }).catch(error => {
         switch(error.code){
-          case 'auth/email-already-in-use':
-            this.error = 'El correo ya existe'
+        case 'auth/email-already-in-use':
+        this.error = 'El correo ya existe'
 
-            break;
-        }
+        break;
+      }
       })
-
     }else{
-      this.error = 'Las contraseñas no coinciden'
-    }
-
+          this.error = 'Las contraseñas no coinciden'
+        }
   }
 
   registro(){
@@ -64,6 +92,7 @@ export class RegisterComponent implements OnInit {
       }).catch(error => {
         console.log(error)
       })
+      // const respuesta = this.usuarioService.guardaUsuario(this.usuario)
 
     }else{
       this.error = 'Las contraseñas no coinciden'
