@@ -50,6 +50,7 @@ export class AuthService {
   }
 
   logout(){
+    localStorage.removeItem('usuario')
     this.authF.signOut()
   }
 }

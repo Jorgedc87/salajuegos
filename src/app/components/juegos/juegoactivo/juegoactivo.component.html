@@ -16,6 +16,9 @@
             <div *ngIf="juegoActivo === 'Trivia'">
                 <app-trivia></app-trivia>
             </div>
+            <div *ngIf="juegoActivo === 'Ahorcado'">
+                <app-ahorcado></app-ahorcado>
+            </div>
         </div>
         <div *ngIf="juegoActivo === 'Trivia'">
             <app-trivia-enviapregunta></app-trivia-enviapregunta>

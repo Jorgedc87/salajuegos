@@ -21,8 +21,11 @@
 
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/quien-soy" routerLinkActive="active">Quien Soy</a>
-              </li>
+              <a class="nav-link" routerLink="/quien-soy" routerLinkActive="active">Quien Soy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/paquetes" routerLinkActive="active" *ngIf="userLogged|async as user">Suscripción</a>
+            </li>
           </ul>
           <div class="d-flex mt-3 mt-lg-0" *ngIf="!(userLogged|async)">
             <button class="btn btn-login" routerLink="/login">Ingresa</button>

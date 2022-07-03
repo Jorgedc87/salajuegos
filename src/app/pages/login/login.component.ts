@@ -44,8 +44,9 @@ export class LoginComponent implements OnInit {
     // console.log(this.forma.get('contraseña').value)
     if(this.forma.get('contraseña').value != '' && this.forma.get('email').value != ''){
       this.authService.login(this.usuario).then(res =>{
+        localStorage.setItem('usuario',String(res.user.email))
         this.route.navigate(['inicio'])
-        console.log(res)
+        // console.log(res)
       }).catch(error => {
         console.log(error.code)
       })
@@ -55,18 +56,23 @@ export class LoginComponent implements OnInit {
   }
 
   ingresarConGoogle(){
-      this.authService.loginWithGoogle(this.usuario).then(res =>{
-        this.route.navigate(['inicio'])
+    this.authService.loginWithGoogle(this.usuario).then(res =>{
+      this.route.navigate(['inicio'])
+      localStorage.setItem('usuario',String(res.user.email))
         this.error = ''
       })
 
   }
 
   rellenaDatos(){
-    console.log(this.usuarios)
+    // console.log(this.usuarios)
     this.usuario.mail = this.usuarios[0]['email']
     this.usuario.contrasena = this.usuarios[0]['contraseña']
-    console.log(this.forma)
+    console.log(this.forma.value)
+    this.forma = this.fb.group({
+      'contraseña': [this.usuario.contrasena, [Validators.required, Validators.min(6), Validators.max(16)]],
+      'email': [this.usuario.mail, [Validators.required, Validators.email]]
+    });
   }
 
 }

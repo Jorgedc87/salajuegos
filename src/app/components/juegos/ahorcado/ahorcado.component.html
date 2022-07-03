@@ -1,0 +1,44 @@
+<div  class="ventana-juego" >
+
+  <div class="ventana-partida">
+    Intentos:   {{ intentos }}
+  </div>
+
+  <div>
+    <div class="ventana-palabra">
+      {{palabraEnConstruccion}}
+    </div>
+
+    <div class="ventana-teclado">
+      <div class="respuestas">
+        <div>
+          <div class="teclado-contenedor text-center mt-2">
+            <div class="teclado-letra" (click)="compruebaLetra(letra)" *ngFor="let letra of letras">{{letra}}</div>
+        </div>
+
+        </div>
+      </div>
+      <div class="info">
+      </div>
+    </div>
+
+
+  </div>
+
+  <div >
+
+    <!-- <div class="ventana-pregunta">
+      <div>Finalizó la partida.
+        <br>
+      </div>
+    </div> -->
+
+    <!-- <div class="ventana-respuestas">
+
+     <button class="btn btn-primary" >Volver a jugar</button>
+    </div> -->
+
+
+  </div>
+
+</div>

@@ -9,7 +9,7 @@ import { Pregunta } from '../models/pregunta.model';
 export class TriviaService {
 
   constructor(private firestore: Firestore) { }
-  
+
   /*==================================
   Obtiene preguntas
   ==================================*/

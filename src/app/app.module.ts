@@ -27,6 +27,9 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { TriviaEnviapreguntaComponent } from './components/juegos/trivia/trivia-enviapregunta/trivia-enviapregunta.component';
+import { AhorcadoComponent } from './components/juegos/ahorcado/ahorcado.component';
+import { SuscripcionComponent } from './pages/suscripcion/suscripcion.component';
+import { NoauthComponent } from './pages/noauth/noauth.component';
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import { TriviaEnviapreguntaComponent } from './components/juegos/trivia/trivia-
     TableroComponent,
     SquareComponent,
     TriviaComponent,
-    TriviaEnviapreguntaComponent
+    TriviaEnviapreguntaComponent,
+    AhorcadoComponent,
+    SuscripcionComponent,
+    NoauthComponent
   ],
   imports: [
     BrowserModule,

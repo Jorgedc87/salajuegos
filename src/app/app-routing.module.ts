@@ -1,27 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AhorcadoComponent } from './components/juegos/ahorcado/ahorcado.component';
 import { PiedraPapelTijeraComponent } from './components/juegos/piedra-papel-tijera/piedra-papel-tijera.component';
 import { TatetiComponent } from './components/juegos/tateti/tateti.component';
 import { TriviaComponent } from './components/juegos/trivia/trivia.component';
+import { AuthGuard } from './guards/auth.guard';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
 import { JuegosComponent } from './pages/juegos/juegos.component';
 import { LoginComponent } from './pages/login/login.component';
+import { NoauthComponent } from './pages/noauth/noauth.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { SuscripcionComponent } from './pages/suscripcion/suscripcion.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'inicio'},
   {path: 'inicio', component: HomeComponent},
   {path: 'quien-soy', component: AboutUsComponent},
-  {path: 'juegos', component: JuegosComponent, 
+  {path: 'paquetes', component: SuscripcionComponent},
+  {path: 'juegos', component: JuegosComponent,
+  canActivate: [AuthGuard],
     children: [
       {path: 'trivia', component: TriviaComponent},
       {path: 'tateti', component: TatetiComponent},
       {path: 'piedrapapeltijeras', component: PiedraPapelTijeraComponent},
+      {path: 'ahorcado', component: AhorcadoComponent},
     ]},
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegisterComponent},
+  {path: 'noauth', component: NoauthComponent},
   {path: '**', component: ErrorComponent}
 ];
 
