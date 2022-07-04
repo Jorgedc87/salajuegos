@@ -43,12 +43,17 @@ export class LoginComponent implements OnInit {
   ingresar(){
     // console.log(this.forma.get('contraseña').value)
     if(this.forma.get('contraseña').value != '' && this.forma.get('email').value != ''){
-      this.authService.login(this.usuario).then(res =>{
-        localStorage.setItem('usuario',String(res.user.email))
-        this.route.navigate(['inicio'])
+       this.authService.login(this.usuario).then(async(res) =>{
+        await this.userService.guardaUsuario(this.usuario.mail)
+        this.route.navigateByUrl('inicio')
         // console.log(res)
       }).catch(error => {
-        console.log(error.code)
+        switch(error.code){
+          case 'auth/user-not-found':
+          this.error = 'El correo no existe'
+  
+          break;
+        }
       })
     }else{
       this.error = 'Complete todos los datos'

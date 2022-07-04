@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
       this.usuario.contrasena = this.forma.value['contraseña']
 
       this.authService.register(this.usuario).then(res =>{
-        console.log('Registrado')
+        this.usuarioService.guardaUsuario(this.usuario.mail)
         this.route.navigate(['inicio'])
       }).catch(error => {
         switch(error.code){
@@ -68,11 +68,11 @@ export class RegisterComponent implements OnInit {
       this.usuario.mail = this.forma.value['email']
       this.usuario.contrasena = this.forma.value['contraseña']
       this.authService.register(this.usuario).then(res =>{
-        // this.route.navigate(['inicio'])
+        this.route.navigate(['inicio'])
       }).catch(error => {
         console.log(error)
       })
-      // const respuesta = this.usuarioService.guardaUsuario(this.usuario)
+      const respuesta = this.usuarioService.guardaUsuario(this.usuario.mail)
 
     }else{
       this.error = 'Las contraseñas no coinciden'

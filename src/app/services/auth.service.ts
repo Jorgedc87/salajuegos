@@ -27,7 +27,7 @@ export class AuthService {
 
   async login(usuario: Usuario){
     try{
-      return await this.authF.signInWithEmailAndPassword(usuario.mail, usuario.contrasena)
+      return this.authF.signInWithEmailAndPassword(usuario.mail, usuario.contrasena)
     }
     catch (err){
       console.log('Error en login: ', err)
@@ -52,5 +52,6 @@ export class AuthService {
   logout(){
     localStorage.removeItem('usuario')
     this.authF.signOut()
+    this.route.navigateByUrl('inicio')
   }
 }

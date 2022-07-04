@@ -1,4 +1,5 @@
 @use '../../../assets/scss/variables.scss' as var;
+@import 'material-icons/iconfont/material-icons.css';
 
 .navbar {
     margin-bottom: 20px;
@@ -107,7 +108,12 @@
     font-size: 12px;
     padding: 10px;
     border-radius: 10px;
-    margin-right: 15px;
+
+    &:hover{
+        background-color: white;
+        color: #71298d;
+        cursor: pointer;
+    }
 }
 
 .btn-logout{
@@ -117,4 +123,8 @@
     font-family: #eb6767;
     padding: 10px;
     border-radius: 10px;
+}
+
+.userMenu{
+    width: 191px;
 }

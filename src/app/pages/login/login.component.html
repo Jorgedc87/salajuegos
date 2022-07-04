@@ -19,9 +19,9 @@
               <button class="btn btn-reg" type="submit" [disabled]="forma.invalid">Ingresar</button>
             </div>
           </div>
-          <div class="row button-google mt-4">
+          <!-- <div class="row button-google mt-4">
             <input type="submit" value="Accede con Google" (click)="ingresarConGoogle()">
-          </div>
+          </div> -->
           <p>{{error}}</p>
             <small class="invalid"
               *ngIf="forma.controls['email'].errors?.['required'] && forma.controls['email'].touched">
@@ -34,7 +34,7 @@
               Coloca una contraseña
               <br>
             </small>
-          <div class="signup-link">¿Nuevo usuario? <span class="link-div" routerLink="/registro">Registrate ahora</span>
+          <div class="signup-link mt-4">¿Nuevo usuario? <span class="link-div" routerLink="/registro">Registrate ahora</span>
           </div>
         </div>
         <div class="text-center py-2">

@@ -32,8 +32,10 @@
             <button class="btn btn-register" routerLink="/registro">Registrate</button>
           </div>
           <div class="d-flex mt-3 mt-lg-0" *ngIf="userLogged|async as user">
-            <div class="user-logged">{{user.email}}</div>
-            <button class="btn btn-logout" (click)="desloguea()">Desloguear</button>
+            <div class="user-logged" routerLink="perfil">{{user.email}}   
+              <!-- <i class="fa fa-angle-down mx-2"></i> -->
+            </div>
+            <button class="btn btn-logout mx-3" (click)="desloguea()">Desloguear</button>
           </div>
         </div>
       </div>

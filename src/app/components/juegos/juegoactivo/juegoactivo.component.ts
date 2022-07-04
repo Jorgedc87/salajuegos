@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { JuegosService } from 'src/app/services/juegos.service';
 
 @Component({
   selector: 'app-juegoactivo',
@@ -8,17 +10,19 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class JuegoactivoComponent implements OnInit {
 
   @Output() enviaNuevoJuego: EventEmitter<string> = new EventEmitter()
-  @Input() juegoActivo: string = ''
 
   tipoPantalla: string = 'Juego'
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    public juegoServ: JuegosService) { }
 
   ngOnInit(): void {
   }
 
-  cambiaJuego(juego: string): void{
-    this.enviaNuevoJuego.emit(juego);
+  volverMenu(): void{
+    this.juegoServ.juegoActivo = 'Ninguno'
+    this.router.navigateByUrl('juegos')
   }
 
   cambiaPantalla(juego: string): void{

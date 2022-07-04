@@ -1,26 +1,26 @@
 <div class="container">
     <div class="pantalla-juegos text-center">
         <div class="botones-nav">
-            <button class="btn btn-primary" (click)="cambiaJuego('Ninguno')">Volver</button>
+            <button class="btn btn-primary" (click)="volverMenu()">Volver</button>
             <button class="btn btn-warning" (click)="cambiaPantalla('Highscore')" *ngIf="tipoPantalla === 'Juego'">Highscores</button>
             <button class="btn btn-warning" (click)="cambiaPantalla('Juego')" *ngIf="tipoPantalla === 'Highscore'">Juego</button>
         </div>
         <br>
         <div class="juego-activo" *ngIf="tipoPantalla === 'Juego'">
-            <div *ngIf="juegoActivo === 'PPT'">
+            <div *ngIf="juegoServ.juegoActivo === 'ppt'">
                 <app-piedra-papel-tijera></app-piedra-papel-tijera>
             </div>
-            <div *ngIf="juegoActivo === 'Tateti'">
+            <div *ngIf="juegoServ.juegoActivo === 'tateti'">
                 <app-tateti></app-tateti>
             </div>
-            <div *ngIf="juegoActivo === 'Trivia'">
+            <div *ngIf="juegoServ.juegoActivo === 'trivia'">
                 <app-trivia></app-trivia>
             </div>
-            <div *ngIf="juegoActivo === 'Ahorcado'">
+            <div *ngIf="juegoServ.juegoActivo === 'ahorcado'">
                 <app-ahorcado></app-ahorcado>
             </div>
         </div>
-        <div *ngIf="juegoActivo === 'Trivia'">
+        <div *ngIf="juegoServ.juegoActivo === 'trivia'">
             <app-trivia-enviapregunta></app-trivia-enviapregunta>
         </div>
         <div class="score">

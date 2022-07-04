@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { JuegosService } from 'src/app/services/juegos.service';
 
 @Component({
   selector: 'app-listajuegos',
@@ -9,13 +10,13 @@ export class ListajuegosComponent implements OnInit {
 
   @Output() enviaNuevoJuego: EventEmitter<string> = new EventEmitter()
 
-  constructor() { }
+  constructor(private juegoServices: JuegosService) { }
 
   ngOnInit(): void {
   }
 
   cambiaJuego(juego: string): void{
-    this.enviaNuevoJuego.emit(juego);
+    // this.juegoServices.cambiaJuego(juego)
   }
 
 }

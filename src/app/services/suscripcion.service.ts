@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, query, where, getDocs, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Pregunta } from '../models/pregunta.model';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,36 +10,48 @@ import { Pregunta } from '../models/pregunta.model';
 export class SuscripcionService {
   listaPro: string[] = []
   listaPremium: string[] = []
+  data
+  tipoUser = this.userService.tipoUser
+  juegosFree = ['tateti']
+  juegosPro = ['tateti','ppt','ahorcado']
+  juegosPremium = ['tateti','ppt','ahorcado','trivia']
 
   paquete: string = 'Ninguno'
 
   constructor(
-    private firestore: Firestore
+    private firestore: Firestore,
+    public userService: UsersService
   ) { }
 
-  // compruebaPaquete(){
-  //   const paquetesRef = collection(this.firestore, 'paquetes')
-  //   return collectionData(paquetesRef, { idField: 'id'}) as Observable<any[]>
-  // }
+  cargaPaquetes(){
+    if(localStorage.getItem('pro')){
+      this.listaPro = JSON.parse(localStorage.getItem('pro'))
+    }
+
+    if(localStorage.getItem('premium')){
+      this.listaPremium = JSON.parse(localStorage.getItem('premium'))
+    }
+
+    localStorage.setItem('juegosFree', JSON.stringify(this.juegosFree))
+    localStorage.setItem('juegosPro', JSON.stringify(this.juegosPro))
+    localStorage.setItem('juegosPremium', JSON.stringify(this.juegosPremium))
+
+  }
 
   adhiereMiembro(tipo: string){
+    const usuario = JSON.parse(localStorage.getItem('usuario'))
+    const mail = usuario.mail
     if(confirm('Está a punto de convertirse en miembro '+ tipo + ' ¿Desea seguir adelante?'))
     switch(tipo)
     {
       case 'Pro':
-        if(localStorage.getItem('pro')){
-          this.listaPro = JSON.parse(localStorage.getItem('pro'))
-        }
-        this.listaPro.push(localStorage.getItem('usuario'))
-        localStorage.setItem('pro',JSON.stringify(this.listaPro))
+        
+
         break
 
       case 'Premium':
-        if(localStorage.getItem('pro')){
-          this.listaPremium = JSON.parse(localStorage.getItem('premium'))
-        }
-        this.listaPremium.push(localStorage.getItem('usuario'))
-        localStorage.setItem('premium',JSON.stringify(this.listaPremium))
+
+ 
         break
     }
   }
@@ -75,5 +88,11 @@ export class SuscripcionService {
         break
     }
     return false
+  }
+
+  chequeaUsuario(){
+    if(JSON.parse(localStorage.getItem('usuario')).mail == ''){
+
+    }
   }
 }

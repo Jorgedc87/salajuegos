@@ -1,5 +1,6 @@
 export default interface UsuarioI {
-    mail: string
+    email: string
     contrasena: string
     nombre: string
+    suscripcion: string
 }

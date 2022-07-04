@@ -1,22 +1,22 @@
 <div class="container juego-flex">
-    <div class="juego-item" routerLink="tateti">
-        <div class="juego-img"><img src="./assets/img/juegos/ttt.jpg" alt="" (click)="cambiaJuego('Tateti')"></div>
+    <div class="juego-item" [routerLink]="['/juegos/tateti']">
+        <div class="juego-img"><img src="./assets/img/juegos/ttt.jpg" alt="" (click)="cambiaJuego('ahorcado')"></div>
         <div class="juego-nombre">TaTeTi</div>
     </div>
-    <div class="juego-item"  routerLink="adivina">
+    <!-- <div class="juego-item"  routerLink="adivina">
         <div class="juego-img"><img src="./assets/img/juegos/gtn.jpg" alt=""></div>
         <div class="juego-nombre">Adivina el número</div>
-    </div>
-    <div class="juego-item"  routerLink="piederapapeltijera">
-        <div class="juego-img"><img src="./assets/img/juegos/ppt.jpg" alt="" (click)="cambiaJuego('PPT')"></div>
+    </div> -->
+    <div class="juego-item"  [routerLink]="['/juegos/ppt']">
+        <div class="juego-img"><img src="./assets/img/juegos/ppt.jpg" alt="" (click)="cambiaJuego('ahorcado')"></div>
         <div class="juego-nombre">Piedra Papel o Tijera</div>
     </div>
-    <div class="juego-item"  routerLink="trivia">
-        <div class="juego-img"><img src="./assets/img/juegos/trivia.jpg" alt="" (click)="cambiaJuego('Trivia')"></div>
+    <div class="juego-item"  [routerLink]="['/juegos/trivia']">
+        <div class="juego-img"><img src="./assets/img/juegos/trivia.jpg" alt="" (click)="cambiaJuego('ahorcado')"></div>
         <div class="juego-nombre">Trivia</div>
     </div>
-    <div class="juego-item"  routerLink="ahorcado">
-        <div class="juego-img"><img src="./assets/img/juegos/ahorcado.jpg" alt="" (click)="cambiaJuego('Ahorcado')"></div>
+    <div class="juego-item" [routerLink]="['/juegos/ahorcado']">
+        <div class="juego-img"><img src="./assets/img/juegos/ahorcado.jpg" alt="" (click)="cambiaJuego('ahorcado')"></div>
         <div class="juego-nombre">Ahorcado</div>
     </div>
 </div>

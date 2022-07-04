@@ -30,6 +30,7 @@ import { TriviaEnviapreguntaComponent } from './components/juegos/trivia/trivia-
 import { AhorcadoComponent } from './components/juegos/ahorcado/ahorcado.component';
 import { SuscripcionComponent } from './pages/suscripcion/suscripcion.component';
 import { NoauthComponent } from './pages/noauth/noauth.component';
+import { MiperfilComponent } from './pages/miperfil/miperfil.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { NoauthComponent } from './pages/noauth/noauth.component';
     TriviaEnviapreguntaComponent,
     AhorcadoComponent,
     SuscripcionComponent,
-    NoauthComponent
+    NoauthComponent,
+    MiperfilComponent
   ],
   imports: [
     BrowserModule,
