@@ -7,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AhorcadoComponent implements OnInit {
 
+  estado = 'Por iniciar'
   intentos: number = 0
+  palabras: string[] = ['Llamado','Marginado','Juego','Ahorcado','Temeroso','Amistosa','Cuadrangular','Salvaje','Planteo','Payaso','Calendario','Caleidoscopio','Titanic','Personalizar','Mañanita','Gourmet','Felino','Murcielago']
   palabra: String = "LLAMADO"
   palabraEnConstruccion: String = "_______"
   letras: string[] = ['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V','W','X','Y','Z']
+  letrasUsadas: string[] = []
 
   constructor() { }
 
   ngOnInit(): void {
+    this.iniciarJuego()
   }
 
   compruebaLetra(letra: string){
@@ -28,6 +32,50 @@ export class AhorcadoComponent implements OnInit {
        }
       }
     }
+    this.letrasUsadas.push(letra)
+    console.log(this.letrasUsadas)
+    this.intentos++
+
+    if(this.verificaVictoria()){
+      this.estado = 'Finalizado'
+    }
+
+  }
+
+  iniciarJuego(){
+    
+    let randomNumber = Math.floor(Math.random() * ( -1 - (this.palabras.length-1))) * -1
+    randomNumber -= 1
+    this.palabra = this.palabras[randomNumber].toUpperCase()
+    let palabra = ""
+    for(let i=0;i<this.palabra.length;i++){
+      palabra+='_'
+    }
+    this.palabraEnConstruccion = palabra
+    console.log(palabra)
+  }
+
+  verificaVictoria(){
+    let victoria = 1
+    for(let i = 0; i < this.palabraEnConstruccion.length; i++){
+      if(this.palabraEnConstruccion[i] == '_'){
+        victoria = 0
+      }
+      console.log(this.palabraEnConstruccion[i])
+    }
+
+    if(victoria==1){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  reiniciaJuego(){
+    this.letrasUsadas = []
+    this.intentos=0
+    this.estado = 'Jugando'
+    this.iniciarJuego()
   }
 
     // if(this.palabra.includes(letra)){

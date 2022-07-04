@@ -6,14 +6,41 @@
 
   <div>
     <div class="ventana-palabra">
-      {{palabraEnConstruccion}}
+      <div *ngIf="estado == 'Por iniciar'">
+        <div>Inicia la partida
+          <br>
+  
+        </div>
+      </div>
+      <div *ngIf="estado == 'Finalizado'">
+
+        <div style="font-size:20px">
+          La palabra era: {{palabra}}
+          Finalizó la partida.
+          <br>
+  
+        </div>
+      </div>
+      <div *ngIf="estado == 'Jugando'">
+
+        {{palabraEnConstruccion}}
+      </div>
     </div>
 
-    <div class="ventana-teclado">
+    <div class="ventana-teclado" *ngIf="estado == 'Jugando'">
       <div class="respuestas">
         <div>
           <div class="teclado-contenedor text-center mt-2">
-            <div class="teclado-letra" (click)="compruebaLetra(letra)" *ngFor="let letra of letras">{{letra}}</div>
+            <div class="teclado-letra" *ngFor="let letra of letras">
+              <div *ngIf="!letrasUsadas.includes(letra)" (click)="compruebaLetra(letra)">
+                {{letra}}
+              </div>
+              <div *ngIf="letrasUsadas.includes(letra)" [ngClass]="{'usada': letrasUsadas.includes(letra)}">
+                {{letra}}
+              </div>
+              
+            
+          </div>
         </div>
 
         </div>
@@ -26,6 +53,20 @@
   </div>
 
   <div >
+
+  <div *ngIf="estado != 'Jugando'">
+
+    <div class="ventana-pregunta">
+
+    </div>
+
+    <div class="ventana-respuestas">
+      
+      <button class="btn btn-primary" (click)="reiniciaJuego()">Jugar</button>
+    </div>
+
+
+  </div>
 
     <!-- <div class="ventana-pregunta">
       <div>Finalizó la partida.
