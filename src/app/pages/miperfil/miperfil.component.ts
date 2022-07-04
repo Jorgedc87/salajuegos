@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import UsuarioI from 'src/app/interfaces/usuario';
 import { JuegosService } from 'src/app/services/juegos.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-miperfil',
@@ -12,7 +13,7 @@ export class MiperfilComponent implements OnInit {
   usuario: UsuarioI
   juegos
 
-  constructor(private juegosService: JuegosService) { }
+  constructor(private juegosService: JuegosService,private userService: UsersService) { }
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'))
@@ -25,6 +26,10 @@ export class MiperfilComponent implements OnInit {
 
   cargaJuegosPack(){
    this.juegos = this.juegosService.cargaJuegosPack(this.usuario.suscripcion)
+  }
+
+  bajaSuscripcion(){
+    this.userService.updateUser('Free')
   }
 
 }
