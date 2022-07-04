@@ -31,6 +31,7 @@ import { AhorcadoComponent } from './components/juegos/ahorcado/ahorcado.compone
 import { SuscripcionComponent } from './pages/suscripcion/suscripcion.component';
 import { NoauthComponent } from './pages/noauth/noauth.component';
 import { MiperfilComponent } from './pages/miperfil/miperfil.component';
+import { ListausuariosComponent } from './pages/listausuarios/listausuarios.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { MiperfilComponent } from './pages/miperfil/miperfil.component';
     AhorcadoComponent,
     SuscripcionComponent,
     NoauthComponent,
-    MiperfilComponent
+    MiperfilComponent,
+    ListausuariosComponent
   ],
   imports: [
     BrowserModule,

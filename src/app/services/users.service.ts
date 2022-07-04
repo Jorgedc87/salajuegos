@@ -11,8 +11,9 @@ import { Usuario } from '../models/usuario.model';
   providedIn: 'root'
 })
 export class UsersService {
-  
+
   data
+  usuarios: any[]
   tipoUser = 'Free'
   id: string = 'dsa'
   id2: String = 'asd'
@@ -47,7 +48,7 @@ export class UsersService {
           const userRef = doc(this.firestore, 'users',id)
           await updateDoc(userRef, {
             suscripcion: tipo
-          })  
+          })
           this.router.navigateByUrl('inicio')
         }
       }
@@ -67,15 +68,29 @@ export class UsersService {
   async getUserInfo(email: string){
     const userRef = collection(this.firestore, 'users')
     const q = query(userRef, where("email", "==", email))
-    
+
     const querySnapshot = await getDocs(q)
-    
+
     querySnapshot.forEach((doc) =>{
       this.data =  doc.data()
       this.id =  doc.id
     })
   }
-  
+
+  async getUsersInfo(){
+    const userRef = collection(this.firestore, 'users')
+    const q = query(userRef)
+    let usuarios = []
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      usuarios.push(doc.data())
+    });
+
+    return usuarios
+  }
+
   async guardaUsuario(mail: string){
     await this.getUserInfo(mail)
     const usuario = JSON.stringify(this.data)

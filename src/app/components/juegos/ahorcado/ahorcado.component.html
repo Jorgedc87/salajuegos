@@ -9,19 +9,20 @@
       <div *ngIf="estado == 'Por iniciar'">
         <div>Inicia la partida
           <br>
-  
+
         </div>
       </div>
       <div *ngIf="estado == 'Finalizado'">
 
         <div style="font-size:20px">
           La palabra era: {{palabra}}
+          <br>
           Finalizó la partida.
           <br>
-  
+
         </div>
       </div>
-      <div *ngIf="estado == 'Jugando'">
+      <div *ngIf="estado == 'Jugando'" class="espaciado">
 
         {{palabraEnConstruccion}}
       </div>
@@ -38,8 +39,8 @@
               <div *ngIf="letrasUsadas.includes(letra)" [ngClass]="{'usada': letrasUsadas.includes(letra)}">
                 {{letra}}
               </div>
-              
-            
+
+
           </div>
         </div>
 
@@ -61,7 +62,7 @@
     </div>
 
     <div class="ventana-respuestas">
-      
+
       <button class="btn btn-primary" (click)="reiniciaJuego()">Jugar</button>
     </div>
 

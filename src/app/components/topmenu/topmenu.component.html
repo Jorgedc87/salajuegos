@@ -26,13 +26,14 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="/paquetes" routerLinkActive="active" *ngIf="userLogged|async as user">Suscripción</a>
             </li>
+            <a class="nav-link" routerLink="/lista-usuarios" routerLinkActive="active">Lista Usuarios</a>
           </ul>
           <div class="d-flex mt-3 mt-lg-0" *ngIf="!(userLogged|async)">
             <button class="btn btn-login" routerLink="/login">Ingresa</button>
             <button class="btn btn-register" routerLink="/registro">Registrate</button>
           </div>
           <div class="d-flex mt-3 mt-lg-0" *ngIf="userLogged|async as user">
-            <div class="user-logged" routerLink="perfil">{{user.email}}   
+            <div class="user-logged" routerLink="perfil">{{user.email}}
               <!-- <i class="fa fa-angle-down mx-2"></i> -->
             </div>
             <button class="btn btn-logout mx-3" (click)="desloguea()">Desloguear</button>

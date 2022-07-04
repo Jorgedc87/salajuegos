@@ -10,6 +10,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
 import { JuegosComponent } from './pages/juegos/juegos.component';
+import { ListausuariosComponent } from './pages/listausuarios/listausuarios.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MiperfilComponent } from './pages/miperfil/miperfil.component';
 import { NoauthComponent } from './pages/noauth/noauth.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'quien-soy', component: AboutUsComponent},
   {path: 'perfil', component: MiperfilComponent, canActivate: [AuthGuard]},
   {path: 'paquetes', component: SuscripcionComponent, canActivate: [AuthGuard]},
+  {path: 'lista-usuarios', component: ListausuariosComponent},
   {path: 'juegos', component: JuegosComponent, canActivate: [AuthGuard]},
   {path: 'juegos/:id', component: JuegosComponent, canActivate: [SuscriptionGuard]},
   // {path: 'juegos', component: JuegosComponent,

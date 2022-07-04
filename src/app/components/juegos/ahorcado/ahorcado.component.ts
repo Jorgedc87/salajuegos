@@ -9,7 +9,7 @@ export class AhorcadoComponent implements OnInit {
 
   estado = 'Por iniciar'
   intentos: number = 0
-  palabras: string[] = ['Llamado','Marginado','Juego','Ahorcado','Temeroso','Amistosa','Cuadrangular','Salvaje','Planteo','Payaso','Calendario','Caleidoscopio','Titanic','Personalizar','Mañanita','Gourmet','Felino','Murcielago']
+  palabras: string[] = ['Llamado','Marginado','Juego','Ahorcado','Temeroso','Amistosa','Cuadrangular','Salvaje','Planteo','Payaso','Calendario','Caleidoscopio','Titanic','Personalizar','Mañanita','Gourmet','Felino','Murcielago' ,'Algoritmo' ,'Estructura' ,'Datos' ,'Datagrama' ,'Villavicencio' ,'Botella' ,'Mineral']
   palabra: String = "LLAMADO"
   palabraEnConstruccion: String = "_______"
   letras: string[] = ['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V','W','X','Y','Z']
@@ -43,7 +43,7 @@ export class AhorcadoComponent implements OnInit {
   }
 
   iniciarJuego(){
-    
+
     let randomNumber = Math.floor(Math.random() * ( -1 - (this.palabras.length-1))) * -1
     randomNumber -= 1
     this.palabra = this.palabras[randomNumber].toUpperCase()
