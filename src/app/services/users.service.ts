@@ -19,9 +19,9 @@ export class UsersService {
   url = 'https://hostinjor.com/salajuegosapi/v1/usuarios/';
 
   constructor(
-    private firestore: Firestore,
-    private http: HttpClient,
-    private router: Router
+      private firestore: Firestore,
+      private http: HttpClient,
+      private router: Router
     ) { }
 
   addUser(usuario: Usuario){
@@ -52,12 +52,14 @@ export class UsersService {
         }
       }
     }else{
-      const id = String(localStorage.getItem('id'))
-      const userRef = doc(this.firestore, 'users',id)
-      await updateDoc(userRef, {
-        suscripcion: tipo
-      })
-      this.router.navigateByUrl('inicio')
+      if(confirm('¿Desea cambiar el plan?')){
+        const id = String(localStorage.getItem('id'))
+        const userRef = doc(this.firestore, 'users',id)
+        await updateDoc(userRef, {
+          suscripcion: tipo
+        })
+        this.router.navigateByUrl('inicio')
+      }
     }
     this.guardaUsuario(JSON.parse(localStorage.getItem('usuario')).email)
   }
