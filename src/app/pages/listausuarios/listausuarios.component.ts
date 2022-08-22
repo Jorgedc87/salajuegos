@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -12,8 +13,11 @@ export class ListausuariosComponent implements OnInit {
   free = []
   pro = []
   premium = []
+  prueba = []
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService, public pruebaService: StorageService) {
+      this.pruebaService.traerColeccion().then(t => this.prueba = t)
+   }
 
   ngOnInit(): void {
     this.cargaUsuarios()
