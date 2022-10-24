@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './pages/juegos/home/home.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TopmenuComponent } from './components/topmenu/topmenu.component';
@@ -20,6 +20,7 @@ import { JuegoactivoComponent } from './components/juegos/juegoactivo/juegoactiv
 import { firebase } from 'src/environments/firebase';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { TableroComponent } from './components/juegos/tateti/tablero/tablero.component';
 import { SquareComponent } from './components/juegos/tateti/square/square.component';
 import { TriviaComponent } from './components/juegos/trivia/trivia.component';
@@ -32,6 +33,10 @@ import { SuscripcionComponent } from './pages/suscripcion/suscripcion.component'
 import { NoauthComponent } from './pages/noauth/noauth.component';
 import { MiperfilComponent } from './pages/miperfil/miperfil.component';
 import { ListausuariosComponent } from './pages/listausuarios/listausuarios.component';
+import { HighscoreComponent } from './pages/juegos/highscore/highscore.component';
+import { UsersDirective } from './directives/users.directive';
+import { MsjPipe } from './pipe/msj.pipe';
+import { PruebaapiComponent } from './pages/pruebaapi/pruebaapi.component';
 
 
 @NgModule({
@@ -57,7 +62,11 @@ import { ListausuariosComponent } from './pages/listausuarios/listausuarios.comp
     SuscripcionComponent,
     NoauthComponent,
     MiperfilComponent,
-    ListausuariosComponent
+    ListausuariosComponent,
+    HighscoreComponent,
+    UsersDirective,
+    MsjPipe,
+    PruebaapiComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +78,8 @@ import { ListausuariosComponent } from './pages/listausuarios/listausuarios.comp
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebase),
     provideFirebaseApp(() => initializeApp(firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

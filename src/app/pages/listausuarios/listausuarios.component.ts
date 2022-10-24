@@ -16,7 +16,6 @@ export class ListausuariosComponent implements OnInit {
   prueba = []
 
   constructor(private userService: UsersService, public pruebaService: StorageService) {
-      this.pruebaService.traerColeccion().then(t => this.prueba = t)
    }
 
   ngOnInit(): void {

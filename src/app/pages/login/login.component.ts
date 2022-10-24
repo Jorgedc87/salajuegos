@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/models/usuario.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { Usuario } from 'src/app/models/usuario.model';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -66,7 +66,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('usuario',String(res.user.email))
         this.error = ''
       })
-
   }
 
   rellenaDatos(){

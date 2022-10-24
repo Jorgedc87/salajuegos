@@ -75,10 +75,16 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
+              "proxyConfig": "src/proxy.conf.json",
               "browserTarget": "SalaDeJuegos:build:production"
             },
             "development": {
+              "proxyConfig": "src/proxy.conf.json",
               "browserTarget": "SalaDeJuegos:build:development"
+            },
+            "options": {
+              "browserTarget": "SalaDeJuegos:build",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

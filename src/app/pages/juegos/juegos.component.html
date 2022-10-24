@@ -1,3 +1,18 @@
-<app-listajuegos *ngIf="juegosService.juegoActivo === 'Ninguno'" (enviaNuevoJuego)="cambiaJuego($event)"></app-listajuegos>
+<div class="container-juegos mt-5">
+  <div class="row d-flex justify-content-center">
+      <div class="col-md-7">
 
-<app-juegoactivo  *ngIf="juegosService.juegoActivo !== 'Ninguno'"  (enviaNuevoJuego)="cambiaJuego($event)"></app-juegoactivo>
+      <app-listajuegos *ngIf="juegosService.juegoActivo === 'Ninguno'" (enviaNuevoJuego)="cambiaJuego($event)"></app-listajuegos>
+
+      <app-juegoactivo  *ngIf="juegosService.juegoActivo !== 'Ninguno'"  (enviaNuevoJuego)="cambiaJuego($event)"></app-juegoactivo>
+
+    </div>
+
+      <div class="col-md-5">
+
+        <app-highscore></app-highscore>
+
+
+    </div>
+  </div>
+</div>

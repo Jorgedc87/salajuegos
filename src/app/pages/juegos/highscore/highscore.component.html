@@ -1,0 +1,27 @@
+<div class="container d-flex justify-content-center">
+  <div class="card mt-3">
+    <div class="d-flex flex-row justify-content-center p-3 adiv text-white text-center">
+      <span class="pb-3 text-center">Mensajes</span>
+    </div>
+      <div *ngFor="let item of mensajes | async">
+        <div class="d-flex flex-row p-1 text-propio" *ngIf="item.usuario == usuario.nombre">
+
+          <div class="chat ml-2 p-2 float ">{{item | msj}}</div>
+        </div>
+        <div class="d-flex flex-row p-2" *ngIf="item.usuario != usuario.nombre">
+          <div class="user ml-2 p-2">
+            {{item.usuario}} :
+          </div>
+          <div class="chat ml-2 p-2">{{item.texto}}</div>
+        </div>
+      </div>
+
+      <div class="form-group px-3">
+        <textarea class="form-control" rows="5" placeholder="Escriba el mensaje" [(ngModel)]="textoEnvia" (keydown.enter)="enviaChat()"></textarea>
+      </div>
+      <div class="d-flex flex-row justify-content-center p-3 adiv-bottom text-white text-center" (click)="enviaChat()">
+        <span class="pb-3 text-center">Enviar</span>
+      </div>
+  </div>
+
+</div>
